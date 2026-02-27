@@ -1,37 +1,40 @@
-/**
- * UseCase1PalindromeCheckerApp
- * ----------------------------------------
- * A simple console-based application that
- * displays the Palindrome Checker App
- * name and version at startup.
- *
- * Version: 1.0.0
- */
-
 public class PalindromeCheckerApp {
 
-    // Application version constant
-    static final String APP_VERSION = "1.0.0";
+    private static final String APP_NAME = "Palindrome Checker App";
+    private static final String VERSION = "Version 1.0";
 
-    /**
-     * Main Method - Entry point of the application
-     * JVM starts execution from here
-     */
     public static void main(String[] args) {
 
-        // Display Welcome Message
         System.out.println("====================================");
-        System.out.println("     Welcome to Palindrome Checker  ");
+        System.out.println("Welcome to " + APP_NAME);
+        System.out.println(VERSION);
         System.out.println("====================================");
+        System.out.println("This application checks whether a given string is a palindrome.");
+        System.out.println();
 
-        // Display Application Details
-        System.out.println("Application Name : Palindrome Checker App");
-        System.out.println("Application Version : " + APP_VERSION);
+        System.out.println("System ready for palindrome validation...");
+        System.out.println();
 
-        System.out.println("------------------------------------");
-        System.out.println("Application started successfully.");
-        System.out.println("------------------------------------");
+        // Hardcoded string
+        String word = "madam";
 
-        // Application flow continues to next use case (future implementation)
+        // Check palindrome
+        boolean isPalindrome = true;
+
+        for (int i = 0; i < word.length() / 2; i++) {
+            if (word.charAt(i) != word.charAt(word.length() - 1 - i)) {
+                isPalindrome = false;
+                break;
+            }
+        }
+
+        // Print result
+        if (isPalindrome) {
+            System.out.println("Result: \"" + word + "\" is a Palindrome.");
+        } else {
+            System.out.println("Result: \"" + word + "\" is NOT a Palindrome.");
+        }
+
+        System.out.println("\nProgram exited successfully.");
     }
 }
