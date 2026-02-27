@@ -1,9 +1,11 @@
+import java.util.Queue;
+import java.util.LinkedList;
 import java.util.Stack;
 
-public class PalindromeCheckerApp {
+public class UseCase6PalindromeCheckerApp {
 
     private static final String APP_NAME = "Palindrome Checker App";
-    private static final String VERSION = "Version 1.0 - UC5";
+    private static final String VERSION = "Version 1.0 - UC6";
 
     public static void main(String[] args) {
 
@@ -14,22 +16,27 @@ public class PalindromeCheckerApp {
         System.out.println();
 
         // Hardcoded String
-        String input = "madam";
+        String input = "racecar";
 
-        // Create Stack
+        // Create Queue and Stack
+        Queue<Character> queue = new LinkedList<>();
         Stack<Character> stack = new Stack<>();
 
-        // Push characters into stack
+        // Enqueue and Push characters
         for (int i = 0; i < input.length(); i++) {
-            stack.push(input.charAt(i));
+            char ch = input.charAt(i);
+            queue.add(ch);     // Enqueue (FIFO)
+            stack.push(ch);    // Push (LIFO)
         }
 
         boolean isPalindrome = true;
 
-        // Pop and compare
+        // Compare Dequeue vs Pop
         for (int i = 0; i < input.length(); i++) {
-            char poppedChar = stack.pop();
-            if (input.charAt(i) != poppedChar) {
+            char fromQueue = queue.remove();  // Dequeue
+            char fromStack = stack.pop();     // Pop
+
+            if (fromQueue != fromStack) {
                 isPalindrome = false;
                 break;
             }
