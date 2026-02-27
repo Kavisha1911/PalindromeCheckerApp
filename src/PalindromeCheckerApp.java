@@ -1,7 +1,9 @@
-public class UseCase4PalindromeCheckerApp {
+import java.util.Stack;
+
+public class PalindromeCheckerApp {
 
     private static final String APP_NAME = "Palindrome Checker App";
-    private static final String VERSION = "Version 1.0 - UC4";
+    private static final String VERSION = "Version 1.0 - UC5";
 
     public static void main(String[] args) {
 
@@ -12,23 +14,25 @@ public class UseCase4PalindromeCheckerApp {
         System.out.println();
 
         // Hardcoded String
-        String input = "radar";
+        String input = "madam";
 
-        // Convert String to Character Array
-        char[] characters = input.toCharArray();
+        // Create Stack
+        Stack<Character> stack = new Stack<>();
 
-        // Two-pointer approach
-        int start = 0;
-        int end = characters.length - 1;
+        // Push characters into stack
+        for (int i = 0; i < input.length(); i++) {
+            stack.push(input.charAt(i));
+        }
+
         boolean isPalindrome = true;
 
-        while (start < end) {
-            if (characters[start] != characters[end]) {
+        // Pop and compare
+        for (int i = 0; i < input.length(); i++) {
+            char poppedChar = stack.pop();
+            if (input.charAt(i) != poppedChar) {
                 isPalindrome = false;
                 break;
             }
-            start++;
-            end--;
         }
 
         System.out.println("Input String : " + input);
