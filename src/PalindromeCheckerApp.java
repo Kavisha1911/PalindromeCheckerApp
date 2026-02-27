@@ -1,11 +1,10 @@
-import java.util.Queue;
+import java.util.Deque;
 import java.util.LinkedList;
-import java.util.Stack;
 
-public class UseCase6PalindromeCheckerApp {
+public class UseCase7PalindromeCheckerApp {
 
     private static final String APP_NAME = "Palindrome Checker App";
-    private static final String VERSION = "Version 1.0 - UC6";
+    private static final String VERSION = "Version 1.0 - UC7";
 
     public static void main(String[] args) {
 
@@ -16,27 +15,25 @@ public class UseCase6PalindromeCheckerApp {
         System.out.println();
 
         // Hardcoded String
-        String input = "racecar";
+        String input = "refer";
 
-        // Create Queue and Stack
-        Queue<Character> queue = new LinkedList<>();
-        Stack<Character> stack = new Stack<>();
+        // Create Deque
+        Deque<Character> deque = new LinkedList<>();
 
-        // Enqueue and Push characters
+        // Insert characters into deque (rear)
         for (int i = 0; i < input.length(); i++) {
-            char ch = input.charAt(i);
-            queue.add(ch);     // Enqueue (FIFO)
-            stack.push(ch);    // Push (LIFO)
+            deque.addLast(input.charAt(i));
         }
 
         boolean isPalindrome = true;
 
-        // Compare Dequeue vs Pop
-        for (int i = 0; i < input.length(); i++) {
-            char fromQueue = queue.remove();  // Dequeue
-            char fromStack = stack.pop();     // Pop
+        // Compare front and rear until deque size <= 1
+        while (deque.size() > 1) {
 
-            if (fromQueue != fromStack) {
+            char front = deque.removeFirst();  // remove from front
+            char rear = deque.removeLast();    // remove from rear
+
+            if (front != rear) {
                 isPalindrome = false;
                 break;
             }
