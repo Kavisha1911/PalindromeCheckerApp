@@ -1,7 +1,7 @@
-public class PalindromeCheckerApp {
+public class UseCase4PalindromeCheckerApp {
 
     private static final String APP_NAME = "Palindrome Checker App";
-    private static final String VERSION = "Version 1.0";
+    private static final String VERSION = "Version 1.0 - UC4";
 
     public static void main(String[] args) {
 
@@ -9,30 +9,35 @@ public class PalindromeCheckerApp {
         System.out.println("Welcome to " + APP_NAME);
         System.out.println(VERSION);
         System.out.println("====================================");
-        System.out.println("This application checks whether a given string is a palindrome.");
         System.out.println();
 
-        System.out.println("System ready for palindrome validation...");
-        System.out.println();
+        // Hardcoded String
+        String input = "radar";
 
-        // Hardcoded string
-        String word = "madam";
+        // Convert String to Character Array
+        char[] characters = input.toCharArray();
 
-        // Check palindrome
+        // Two-pointer approach
+        int start = 0;
+        int end = characters.length - 1;
         boolean isPalindrome = true;
 
-        for (int i = 0; i < word.length() / 2; i++) {
-            if (word.charAt(i) != word.charAt(word.length() - 1 - i)) {
+        while (start < end) {
+            if (characters[start] != characters[end]) {
                 isPalindrome = false;
                 break;
             }
+            start++;
+            end--;
         }
 
-        // Print result
+        System.out.println("Input String : " + input);
+        System.out.println();
+
         if (isPalindrome) {
-            System.out.println("Result: \"" + word + "\" is a Palindrome.");
+            System.out.println("Result: \"" + input + "\" is a Palindrome.");
         } else {
-            System.out.println("Result: \"" + word + "\" is NOT a Palindrome.");
+            System.out.println("Result: \"" + input + "\" is NOT a Palindrome.");
         }
 
         System.out.println("\nProgram exited successfully.");
