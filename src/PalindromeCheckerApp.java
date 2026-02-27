@@ -1,7 +1,7 @@
-public class PalindromeCheckerApp {
+public class UseCase3PalindromeCheckerApp {
 
     private static final String APP_NAME = "Palindrome Checker App";
-    private static final String VERSION = "Version 1.0";
+    private static final String VERSION = "Version 1.0 - UC3";
 
     public static void main(String[] args) {
 
@@ -9,30 +9,26 @@ public class PalindromeCheckerApp {
         System.out.println("Welcome to " + APP_NAME);
         System.out.println(VERSION);
         System.out.println("====================================");
-        System.out.println("This application checks whether a given string is a palindrome.");
         System.out.println();
 
-        System.out.println("System ready for palindrome validation...");
-        System.out.println();
+        // Hardcoded String
+        String original = "level";
+        String reversed = "";
 
-        // Hardcoded string
-        String word = "madam";
-
-        // Check palindrome
-        boolean isPalindrome = true;
-
-        for (int i = 0; i < word.length() / 2; i++) {
-            if (word.charAt(i) != word.charAt(word.length() - 1 - i)) {
-                isPalindrome = false;
-                break;
-            }
+        // Reverse the string using for loop
+        for (int i = original.length() - 1; i >= 0; i--) {
+            reversed = reversed + original.charAt(i);
         }
 
-        // Print result
-        if (isPalindrome) {
-            System.out.println("Result: \"" + word + "\" is a Palindrome.");
+        System.out.println("Original String : " + original);
+        System.out.println("Reversed String : " + reversed);
+        System.out.println();
+
+        // Compare using equals()
+        if (original.equals(reversed)) {
+            System.out.println("Result: \"" + original + "\" is a Palindrome.");
         } else {
-            System.out.println("Result: \"" + word + "\" is NOT a Palindrome.");
+            System.out.println("Result: \"" + original + "\" is NOT a Palindrome.");
         }
 
         System.out.println("\nProgram exited successfully.");
